@@ -1,0 +1,14 @@
+pydantic>=2.0
+pyyaml
+pytest
+networkx
+scikit-learn
+numpy
+pandas
+scipy
+torch
+
+mesa
+
+langgraph
+langchain-core
