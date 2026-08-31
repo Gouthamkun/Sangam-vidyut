@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from typing import Literal
 
 class SimulationConfig(BaseModel):
@@ -33,6 +33,12 @@ class EnvironmentConfig(BaseModel):
 class CognitiveConfig(BaseModel):
     lower_threshold: float = Field(default=0.3, description="Below this score, clearly reject.", ge=0.0, le=1.0)
     upper_threshold: float = Field(default=0.7, description="Above this score, clearly adopt.", ge=0.0, le=1.0)
+    
+    @model_validator(mode='after')
+    def check_thresholds(self):
+        if self.lower_threshold > self.upper_threshold:
+            raise ValueError("lower_threshold must be <= upper_threshold")
+        return self
 
 class LLMConfig(BaseModel):
     enabled: bool = Field(default=True, description="Whether LLM routing is enabled")

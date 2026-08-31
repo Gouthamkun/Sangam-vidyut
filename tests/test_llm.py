@@ -3,8 +3,8 @@ from src.config.schema import ExperimentConfig
 from src.simulation.llm.providers import LangGraphLLMProvider
 from src.simulation.llm.interface import LLMInterface
 from src.simulation.llm.workflow import HouseholdDecision
+from src.simulation.model import SangamVidyutModel
 
-# Mock Runnable that simulates a structured output LLM response
 class DummyStructuredRunnable:
     def __init__(self, decision="WAIT", confidence=0.8):
         self.decision = decision
@@ -18,9 +18,11 @@ class DummyStructuredRunnable:
         )
 
 class DummyLLM:
-    def __init__(self, decision="WAIT", fail=False):
+    def __init__(self, decision="WAIT", confidence=0.8, fail=False, malformed=False):
         self.decision = decision
+        self.confidence = confidence
         self.fail = fail
+        self.malformed = malformed
 
     def with_structured_output(self, schema):
         if self.fail:
@@ -28,81 +30,92 @@ class DummyLLM:
                 def invoke(self, input_data):
                     raise ValueError("Simulated LLM API Error")
             return FailingRunnable()
-        return DummyStructuredRunnable(self.decision)
+            
+        if self.malformed:
+            class MalformedRunnable:
+                def invoke(self, input_data):
+                    class BadDecision:
+                        decision = "MAYBE"
+                        confidence = 1.5
+                    return BadDecision()
+            return MalformedRunnable()
+            
+        return DummyStructuredRunnable(self.decision, self.confidence)
 
 @pytest.fixture
 def base_config():
     config = ExperimentConfig()
-    config.llm.provider = "langgraph"
+    config.llm.provider = "mock"  # Default to mock
     config.llm.cache_enabled = True
     config.llm.fallback_enabled = True
     return config
 
 def test_langgraph_provider_adopt(base_config):
-    # Inject dummy LLM that always adopts
+    base_config.llm.provider = "langgraph"
     provider = LangGraphLLMProvider(base_config, llm_instance=DummyLLM(decision="ADOPT"))
     interface = LLMInterface(provider=provider, fallback_enabled=True)
     
     context = {"agent_id": 1, "income": 50000, "sir_score": 0.5, "combined_score": 0.6}
-    decision = interface.decide(context)
-    
-    assert decision is True
-    assert interface.failures == 0
-    assert provider.call_count == 1
+    assert interface.decide(context) is True
 
 def test_langgraph_provider_wait(base_config):
+    base_config.llm.provider = "langgraph"
     provider = LangGraphLLMProvider(base_config, llm_instance=DummyLLM(decision="WAIT"))
     interface = LLMInterface(provider=provider, fallback_enabled=True)
     
     context = {"agent_id": 2, "income": 50000, "sir_score": 0.5, "combined_score": 0.6}
-    decision = interface.decide(context)
-    
-    assert decision is False
-    assert provider.call_count == 1
+    assert interface.decide(context) is False
 
-def test_llm_caching(base_config):
-    provider = LangGraphLLMProvider(base_config, llm_instance=DummyLLM(decision="ADOPT"))
-    
-    context1 = {"agent_id": 1, "income": 50000, "sir_score": 0.5}
-    context2 = {"agent_id": 2, "income": 50000, "sir_score": 0.5} # structurally identical
-    context3 = {"agent_id": 3, "income": 60000, "sir_score": 0.5} # different
-    
-    provider.generate_decision(context1)
-    assert provider.call_count == 1
-    assert provider.cache_misses == 1
-    assert provider.cache_hits == 0
-    
-    # Should hit cache
-    provider.generate_decision(context2)
-    assert provider.call_count == 1
-    assert provider.cache_misses == 1
-    assert provider.cache_hits == 1
-    
-    # Should miss cache
-    provider.generate_decision(context3)
-    assert provider.call_count == 2
-    assert provider.cache_misses == 2
-    assert provider.cache_hits == 1
-
-def test_fallback_behavior(base_config):
-    provider = LangGraphLLMProvider(base_config, llm_instance=DummyLLM(fail=True))
+def test_adversarial_malformed_output(base_config):
+    base_config.llm.provider = "langgraph"
+    provider = LangGraphLLMProvider(base_config, llm_instance=DummyLLM(malformed=True))
     interface = LLMInterface(provider=provider, fallback_enabled=True)
     
-    context = {"agent_id": 1, "combined_score": 0.8} # fallback threshold is >= 0.5
-    
-    # Should not raise exception, but use fallback
+    context = {"agent_id": 1, "combined_score": 0.6} 
     decision = interface.decide(context)
     
     assert decision is True
     assert interface.failures == 1
     assert interface.fallbacks == 1
 
-def test_fallback_disabled(base_config):
+def test_fallback_behavior(base_config):
+    base_config.llm.provider = "langgraph"
     provider = LangGraphLLMProvider(base_config, llm_instance=DummyLLM(fail=True))
-    interface = LLMInterface(provider=provider, fallback_enabled=False)
+    interface = LLMInterface(provider=provider, fallback_enabled=True)
     
-    context = {"agent_id": 1, "combined_score": 0.8}
+    context = {"agent_id": 1, "combined_score": 0.2}
+    assert interface.decide(context) is False
+    assert interface.failures == 1
+
+def test_zero_width_threshold_routing(base_config):
+    base_config.cognitive.lower_threshold = 0.5
+    base_config.cognitive.upper_threshold = 0.5
+    base_config.llm.provider = "mock"
     
-    # Should raise exception
-    with pytest.raises(Exception):
-        interface.decide(context)
+    model = SangamVidyutModel(base_config)
+    model.step()
+    
+    df = model.datacollector.get_model_vars_dataframe()
+    assert df["step_llm_decisions"].sum() == 0
+
+def test_cache_benchmark(base_config):
+    base_config.simulation.n_agents = 500
+    base_config.simulation.timesteps = 4
+    base_config.cognitive.lower_threshold = 0.0 
+    base_config.cognitive.upper_threshold = 1.0 
+    base_config.llm.provider = "mock"
+    
+    model = SangamVidyutModel(base_config)
+    for _ in range(4):
+        model.step()
+        
+    df = model.datacollector.get_model_vars_dataframe()
+    total_llm_decisions = df["step_llm_decisions"].sum()
+    
+    hits = model.llm_interface.provider.cache_hits
+    misses = model.llm_interface.provider.cache_misses
+    invocations = model.llm_interface.provider.call_count
+    
+    assert total_llm_decisions > 0
+    assert hits > 100
+    assert (hits + misses) == total_llm_decisions

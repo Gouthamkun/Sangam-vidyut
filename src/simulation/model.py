@@ -28,9 +28,9 @@ class SangamVidyutModel(mesa.Model):
         self.new_adoptions = 0
         self.new_adoptions_last_step = 0
         
-        # Metrics Tracking
-        self.rule_decisions = 0
-        self.llm_decisions = 0
+        # Per-step Metrics Tracking
+        self.step_rule_decisions = 0
+        self.step_llm_decisions = 0
         
         # Initialize LLM Interface
         if config.llm.provider == "langgraph":
@@ -73,7 +73,7 @@ class SangamVidyutModel(mesa.Model):
                     a.is_adopter = True
                     a.sir_state = 1
             
-        # Data Collection
+        # Data Collection (Explicitly disambiguating per-step vs cumulative)
         self.datacollector = mesa.DataCollector(
             model_reporters={
                 "timestep": "timestep",
@@ -86,13 +86,13 @@ class SangamVidyutModel(mesa.Model):
                 "subsidy": lambda m: m.government.subsidy,
                 "panel_price": lambda m: m.industry.panel_price,
                 "estimated_emissions_reduction": lambda m: m.environment.co2_reduction,
-                "rule_decisions": "rule_decisions",
-                "llm_decisions": "llm_decisions",
-                "llm_calls": lambda m: m.llm_interface.provider.call_count,
-                "cache_hits": lambda m: m.llm_interface.provider.cache_hits,
-                "cache_misses": lambda m: m.llm_interface.provider.cache_misses,
-                "llm_failures": lambda m: m.llm_interface.failures,
-                "fallback_decisions": lambda m: m.llm_interface.fallbacks
+                "step_rule_decisions": "step_rule_decisions",
+                "step_llm_decisions": "step_llm_decisions",
+                "cumulative_llm_calls": lambda m: m.llm_interface.provider.call_count,
+                "cumulative_cache_hits": lambda m: m.llm_interface.provider.cache_hits,
+                "cumulative_cache_misses": lambda m: m.llm_interface.provider.cache_misses,
+                "cumulative_llm_failures": lambda m: m.llm_interface.failures,
+                "cumulative_fallback_decisions": lambda m: m.llm_interface.fallbacks
             }
         )
         
@@ -117,8 +117,8 @@ class SangamVidyutModel(mesa.Model):
         self.new_adoptions = 0
         
         # Reset per-step counters
-        self.rule_decisions = 0
-        self.llm_decisions = 0
+        self.step_rule_decisions = 0
+        self.step_llm_decisions = 0
         
         # 1. Government and Industry step (global economic variables)
         self.government.step()

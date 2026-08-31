@@ -69,12 +69,12 @@ class ConsumerAgent(mesa.Agent):
                 # Clearly decided: Accept
                 decision = True
                 self.decision_path = "rule"
-                self.model.rule_decisions += 1
+                self.model.step_rule_decisions += 1
             elif score <= lower_thresh:
                 # Clearly decided: Reject
                 decision = False
                 self.decision_path = "rule"
-                self.model.rule_decisions += 1
+                self.model.step_rule_decisions += 1
             else:
                 # Ambiguous: Call LLM Interface
                 context = {
@@ -96,10 +96,9 @@ class ConsumerAgent(mesa.Agent):
                 try:
                     decision = self.model.llm_interface.decide(context)
                     self.decision_path = "llm"
-                    self.model.llm_decisions += 1
+                    self.model.step_llm_decisions += 1
                 except Exception as e:
-                    # Fallback logic is handled by interface, but track if raised
-                    # (In our interface, it returns the fallback if enabled)
+                    # Fallback logic is handled by interface
                     pass
             
             # Final Decision
