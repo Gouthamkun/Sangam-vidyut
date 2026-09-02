@@ -1,0 +1,32 @@
+{
+  "experiment_id": "exp3a_deterministic_seed_200",
+  "model_type": "DETERMINISTIC_ABM",
+  "seed": 200,
+  "population": 100,
+  "timesteps": 12,
+  "final_adoption": 5,
+  "final_adoption_rate": 0.05,
+  "cumulative_adoptions": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+  ],
+  "tipping_point": null,
+  "tipping_point_reached": false,
+  "peak_new_adoption_rate": 0.0,
+  "time_to_25_percent": null,
+  "time_to_50_percent": null,
+  "total_llm_calls": 0,
+  "total_cache_hits": 0,
+  "total_llm_failures": 0,
+  "cumulative_co2_displaced": 17.5
+}

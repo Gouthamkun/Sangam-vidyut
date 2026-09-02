@@ -1,0 +1,23 @@
+{
+  "experiment_name": "exp3a_deterministic",
+  "model_type": "DETERMINISTIC_ABM",
+  "seeds": [
+    42,
+    100,
+    200,
+    300,
+    400
+  ],
+  "n_agents": 100,
+  "timesteps": 12,
+  "topology": "watts_strogatz",
+  "parameters": {},
+  "ablation": {
+    "disable_sir": false,
+    "disable_network": false,
+    "disable_dynamic_subsidy": false,
+    "disable_dynamic_pricing": false,
+    "disable_llm": true,
+    "force_mock_llm": false
+  }
+}

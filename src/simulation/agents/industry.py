@@ -10,6 +10,9 @@ class IndustryAgent(mesa.Agent):
         self.panel_price = model.config.industry.base_price
 
     def step(self):
+        if not self.model.config.industry.dynamic_pricing:
+            return
+            
         # Demand threshold (e.g. > 1% of population in a quarter)
         threshold = self.model.config.simulation.n_agents * 0.01
         rate = self.model.config.industry.price_adjustment_rate

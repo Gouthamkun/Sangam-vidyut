@@ -1,0 +1,20 @@
+{
+  "experiment_id": "smoke_static",
+  "model_type": "STATIC_BASELINE",
+  "seed": 42,
+  "population": 100,
+  "timesteps": 4,
+  "final_adoption": 69,
+  "final_adoption_rate": 0.69,
+  "cumulative_adoptions": [
+    69,
+    69,
+    69,
+    69
+  ],
+  "tipping_point": null,
+  "total_llm_calls": 0,
+  "total_cache_hits": 0,
+  "total_llm_failures": 0,
+  "cumulative_co2_displaced": null
+}

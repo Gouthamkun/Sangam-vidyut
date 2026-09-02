@@ -1,0 +1,16 @@
+{
+  "experiment_name": "exp1_topological_diffusion_sweep_5",
+  "model_type": "SIR_ONLY",
+  "num_seeds": 15,
+  "mean_final_adoption_rate": 0.8493333333333333,
+  "std_final_adoption_rate": 0.020711165610664738,
+  "min_final_adoption_rate": 0.83,
+  "max_final_adoption_rate": 0.906,
+  "mean_tipping_point": 1.8666666666666667,
+  "fraction_tipping_point_reached": 1.0,
+  "mean_peak_new_adoption_rate": 0.1864,
+  "mean_time_to_25_percent": 3.2666666666666666,
+  "mean_time_to_50_percent": 4.6,
+  "mean_llm_calls": 0.0,
+  "mean_cache_hit_rate": 0.0
+}

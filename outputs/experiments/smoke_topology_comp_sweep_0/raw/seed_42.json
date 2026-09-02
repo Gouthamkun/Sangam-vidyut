@@ -1,0 +1,20 @@
+{
+  "experiment_id": "smoke_topology_comp_sweep_0_seed_42",
+  "model_type": "FULL_COGNITIVE_ABM",
+  "seed": 42,
+  "population": 100,
+  "timesteps": 4,
+  "final_adoption": 5,
+  "final_adoption_rate": 0.05,
+  "cumulative_adoptions": [
+    5,
+    5,
+    5,
+    5
+  ],
+  "tipping_point": null,
+  "total_llm_calls": 178,
+  "total_cache_hits": 202,
+  "total_llm_failures": 0,
+  "cumulative_co2_displaced": 17.5
+}

@@ -22,12 +22,16 @@ def build_cognitive_workflow(llm_instance=None, model_name: str = "gpt-4o-mini")
     if llm_instance is None:
         # Default to a mock or generic ChatOpenAI if credentials allow
         # For CI/CD tests, this will be passed a FakeListChatModel
-        from langchain_openai import ChatOpenAI
         import os
         if "OPENAI_API_KEY" in os.environ:
-            llm_instance = ChatOpenAI(model=model_name, temperature=0.1)
-        else:
-            # Safe mock fallback for CI if no instance passed and no keys
+            try:
+                from langchain_openai import ChatOpenAI
+                llm_instance = ChatOpenAI(model=model_name, temperature=0.1)
+            except ImportError:
+                pass
+                
+        if llm_instance is None:
+            # Safe mock fallback for CI if no instance passed and no keys/imports
             class DummyLLM:
                 def with_structured_output(self, schema):
                     class DummyRunnable:

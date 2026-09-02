@@ -1,0 +1,29 @@
+{
+  "experiment_name": "exp2_economic_nonlinearity_sweep_7",
+  "model_type": "DETERMINISTIC_ABM",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "n_agents": 500,
+  "timesteps": 24,
+  "topology": "watts_strogatz",
+  "parameters": {
+    "subsidy": 4000
+  },
+  "ablation": {
+    "disable_sir": false,
+    "disable_network": false,
+    "disable_dynamic_subsidy": true,
+    "disable_dynamic_pricing": false,
+    "disable_llm": true
+  }
+}

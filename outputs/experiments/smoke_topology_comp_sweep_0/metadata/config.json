@@ -1,0 +1,23 @@
+{
+  "experiment_name": "smoke_topology_comp_sweep_0",
+  "model_type": "FULL_COGNITIVE_ABM",
+  "seeds": [
+    42,
+    100
+  ],
+  "n_agents": 100,
+  "timesteps": 4,
+  "topology": "watts_strogatz",
+  "parameters": {
+    "topology": "watts_strogatz",
+    "lower_threshold": 0.0,
+    "upper_threshold": 1.0
+  },
+  "ablation": {
+    "disable_sir": false,
+    "disable_network": false,
+    "disable_dynamic_subsidy": false,
+    "disable_dynamic_pricing": false,
+    "disable_llm": false
+  }
+}

@@ -21,10 +21,12 @@ class GovernmentConfig(BaseModel):
     initial_budget: float = Field(default=1000000.0, description="Total finite policy budget.", ge=0.0)
     target_adoption_rate: float = Field(default=0.5, description="Target proportion of households to adopt.", ge=0.0, le=1.0)
     base_subsidy: float = Field(default=1000.0, description="Initial subsidy amount.", ge=0.0)
+    dynamic_subsidy: bool = Field(default=True, description="Whether subsidy adjusts dynamically based on adoption targets.")
 
 class IndustryConfig(BaseModel):
     base_price: float = Field(default=5000.0, description="Initial cost of a solar panel installation.", ge=0.0)
     price_adjustment_rate: float = Field(default=0.05, description="Rate at which price adjusts based on demand.", ge=0.0, le=1.0)
+    dynamic_pricing: bool = Field(default=True, description="Whether panel price adjusts dynamically based on demand.")
 
 class EnvironmentConfig(BaseModel):
     kw_per_panel: float = Field(default=5.0, description="Estimated capacity in kW per installation.", ge=0.0)

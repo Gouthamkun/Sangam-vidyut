@@ -1,0 +1,32 @@
+{
+  "experiment_id": "exp3a_cognitive_mock_seed_42",
+  "model_type": "FULL_COGNITIVE_ABM",
+  "seed": 42,
+  "population": 100,
+  "timesteps": 12,
+  "final_adoption": 11,
+  "final_adoption_rate": 0.11,
+  "cumulative_adoptions": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    11
+  ],
+  "tipping_point": 12,
+  "tipping_point_reached": true,
+  "peak_new_adoption_rate": 0.06,
+  "time_to_25_percent": null,
+  "time_to_50_percent": null,
+  "total_llm_calls": 233,
+  "total_cache_hits": 255,
+  "total_llm_failures": 0,
+  "cumulative_co2_displaced": 38.5
+}

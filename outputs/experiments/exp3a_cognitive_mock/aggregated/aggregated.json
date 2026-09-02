@@ -1,0 +1,16 @@
+{
+  "experiment_name": "exp3a_cognitive_mock",
+  "model_type": "FULL_COGNITIVE_ABM",
+  "num_seeds": 5,
+  "mean_final_adoption_rate": 0.062,
+  "std_final_adoption_rate": 0.026832815729997475,
+  "min_final_adoption_rate": 0.05,
+  "max_final_adoption_rate": 0.11,
+  "mean_tipping_point": 12.0,
+  "fraction_tipping_point_reached": 0.2,
+  "mean_peak_new_adoption_rate": 0.012,
+  "mean_time_to_25_percent": null,
+  "mean_time_to_50_percent": null,
+  "mean_llm_calls": 128.2,
+  "mean_cache_hit_rate": 0.5485915492957747
+}

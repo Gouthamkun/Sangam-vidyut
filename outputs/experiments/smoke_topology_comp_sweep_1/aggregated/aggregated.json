@@ -1,0 +1,12 @@
+{
+  "experiment_name": "smoke_topology_comp_sweep_1",
+  "model_type": "FULL_COGNITIVE_ABM",
+  "num_seeds": 2,
+  "mean_final_adoption_rate": 0.05,
+  "std_final_adoption_rate": 0.0,
+  "min_final_adoption_rate": 0.05,
+  "max_final_adoption_rate": 0.05,
+  "mean_tipping_point": null,
+  "mean_llm_calls": 246.5,
+  "mean_cache_hit_rate": 0.3513157894736842
+}

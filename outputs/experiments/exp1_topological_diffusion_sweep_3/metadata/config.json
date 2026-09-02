@@ -1,0 +1,35 @@
+{
+  "experiment_name": "exp1_topological_diffusion_sweep_3",
+  "model_type": "SIR_ONLY",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+  ],
+  "n_agents": 500,
+  "timesteps": 24,
+  "topology": "watts_strogatz",
+  "parameters": {
+    "beta": 0.15,
+    "topology": "barabasi_albert"
+  },
+  "ablation": {
+    "disable_sir": false,
+    "disable_network": false,
+    "disable_dynamic_subsidy": false,
+    "disable_dynamic_pricing": false,
+    "disable_llm": false
+  }
+}

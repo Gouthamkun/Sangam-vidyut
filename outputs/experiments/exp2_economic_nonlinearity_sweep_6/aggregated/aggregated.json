@@ -1,0 +1,16 @@
+{
+  "experiment_name": "exp2_economic_nonlinearity_sweep_6",
+  "model_type": "DETERMINISTIC_ABM",
+  "num_seeds": 10,
+  "mean_final_adoption_rate": 0.01,
+  "std_final_adoption_rate": 0.0,
+  "min_final_adoption_rate": 0.01,
+  "max_final_adoption_rate": 0.01,
+  "mean_tipping_point": null,
+  "fraction_tipping_point_reached": 0.0,
+  "mean_peak_new_adoption_rate": 0.0,
+  "mean_time_to_25_percent": null,
+  "mean_time_to_50_percent": null,
+  "mean_llm_calls": 0.0,
+  "mean_cache_hit_rate": 0.0
+}
