@@ -1,0 +1,8 @@
+{
+  "source": "cea_consumer_metering_31mar2024.pdf",
+  "reference_date": "31.03.2024",
+  "national_domestic_consumers": 272724602,
+  "total_utilities": 79,
+  "total_states_mapped": 36,
+  "double_counting_prevented": true
+}

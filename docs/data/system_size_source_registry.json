@@ -1,0 +1,28 @@
+[
+  {
+    "dataset_id": "MISSING_SYSTEM_SIZE_DISTRIBUTION",
+    "publisher": "N/A",
+    "dataset_name": "Official Residential PV System-Size Distribution",
+    "access_date": "N/A",
+    "coverage": "N/A",
+    "licensing": "N/A",
+    "raw_file_type": "N/A",
+    "residential_segmentation": "N/A",
+    "variables": ["Capacity Band", "Installation Count"],
+    "target_classification": "P0/P1",
+    "status": "NO VERIFIED DIRECT RESIDENTIAL SYSTEM-SIZE DISTRIBUTION FOUND"
+  },
+  {
+    "dataset_id": "PM_SGMBY_DASHBOARD_AUGUST_2026_AGGREGATE",
+    "publisher": "PM Surya Ghar National Portal / MNRE",
+    "dataset_name": "PM Surya Ghar State-wise Performance Highlights (Aug 2026)",
+    "access_date": "2026-09-02",
+    "coverage": "State-wise",
+    "licensing": "Open",
+    "raw_file_type": "Web Dashboard / PR",
+    "residential_segmentation": "DIRECT",
+    "variables": ["Installations", "Installed Capacity (MW)"],
+    "target_classification": "P2",
+    "status": "Provides paired totals only (Average). Lacks distributional breakdown."
+  }
+]

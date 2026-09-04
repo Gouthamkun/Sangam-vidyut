@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ecological Calibration Schema",
+  "description": "Configuration schema for the empirical aggregate baseline calibration",
+  "type": "object",
+  "properties": {
+    "target": {
+      "type": "object",
+      "properties": {
+        "numerator": {
+          "type": "string",
+          "description": "State-wise PM Surya Ghar residential installation counts"
+        },
+        "denominator": {
+          "type": "string",
+          "description": "Total state-wise eligible residential electricity consumers or HCES expansion sum"
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Household predictors (e.g., log_mpce, household_size, sector, dwelling_type, free_electricity)"
+    },
+    "weighting": {
+      "type": "string",
+      "description": "Multiplier field used strictly for state-level aggregation"
+    },
+    "objective": {
+      "type": "string",
+      "enum": ["Binomial_NLL", "Poisson_NLL", "MSE"],
+      "description": "Loss function evaluating predicted aggregate count vs observed state count"
+    },
+    "state_effects": {
+      "type": "string",
+      "enum": ["None", "Random", "Fixed"],
+      "description": "Heterogeneity assumption. Recommended: None (pooled feature dependence)"
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": ["Leave-One-State-Out", "K-Fold-Geographic"]
+        }
+      }
+    }
+  },
+  "required": ["target", "features", "weighting", "objective", "state_effects", "validation"]
+}

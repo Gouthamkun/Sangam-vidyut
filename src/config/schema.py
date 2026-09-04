@@ -6,6 +6,7 @@ class SimulationConfig(BaseModel):
     timesteps: int = Field(default=12, description="Number of simulation steps (quarters).", ge=1)
     timestep_duration_months: int = Field(default=3, description="Months per timestep.", ge=1)
     seed: int = Field(default=42, description="Random seed for reproducibility.")
+    baseline_provider: Literal["legacy", "empirical"] = Field(default="legacy", description="Source of the base probability (p_base)")
 
 class SIRConfig(BaseModel):
     recovery_duration_quarters: int = Field(default=2, description="Duration in quarters an adopter actively influences others.", ge=0)
@@ -32,12 +33,31 @@ class EnvironmentConfig(BaseModel):
     kw_per_panel: float = Field(default=5.0, description="Estimated capacity in kW per installation.", ge=0.0)
     co2_per_kw: float = Field(default=0.7, description="Estimated CO2 reduction in tons per kW.", ge=0.0)
 
+class BehaviorPolicyConfig(BaseModel):
+    name: str = Field(default="legacy_defaults")
+    lower_threshold: float = Field(default=0.3, ge=0.0, le=1.0)
+    upper_threshold: float = Field(default=0.7, ge=0.0, le=1.0)
+
 class CognitiveConfig(BaseModel):
+    policy: BehaviorPolicyConfig = Field(default_factory=BehaviorPolicyConfig)
+    
+    # Keep flat thresholds for backward compatibility, mapped to policy defaults if not overridden
     lower_threshold: float = Field(default=0.3, description="Below this score, clearly reject.", ge=0.0, le=1.0)
     upper_threshold: float = Field(default=0.7, description="Above this score, clearly adopt.", ge=0.0, le=1.0)
     
     @model_validator(mode='after')
-    def check_thresholds(self):
+    def sync_policy_thresholds(self):
+        # Explicit policy overrides flat fields if a specific policy is named
+        if self.policy.name == "cognitive_accessible_candidate_v1":
+            self.policy.lower_threshold = 0.05
+            self.policy.upper_threshold = 0.20
+            self.lower_threshold = 0.05
+            self.upper_threshold = 0.20
+        else:
+            # Sync flat fields into policy for consistency
+            self.policy.lower_threshold = self.lower_threshold
+            self.policy.upper_threshold = self.upper_threshold
+
         if self.lower_threshold > self.upper_threshold:
             raise ValueError("lower_threshold must be <= upper_threshold")
         return self

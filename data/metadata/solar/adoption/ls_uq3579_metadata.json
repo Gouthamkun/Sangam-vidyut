@@ -1,0 +1,10 @@
+{
+  "publisher": "Parliament of India (Lok Sabha)",
+  "question_number": "3579",
+  "answer_date": "10.08.2023",
+  "reference_date": "31.07.2023",
+  "source_file": "lok_sabha_uq_3579_residential_phase2_2023.pdf",
+  "source_sha256": "747ce2274d865adb23179afdab03c05305246d06f9398f23c290b28c09474cbb",
+  "extraction_method": "pypdf text extraction with regex parsing",
+  "processing_version": "1.0"
+}

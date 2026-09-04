@@ -1,0 +1,28 @@
+[
+  {
+    "dataset_id": "RS_SQ_210_HISTORICAL_RESIDENTIAL_CAPACITY",
+    "publisher": "Parliament of India (Rajya Sabha)",
+    "dataset_name": "Rajya Sabha Starred Question No. 210 (08.08.2023) - Targets for rooftop solar programme",
+    "access_date": "N/A",
+    "coverage": "State-wise",
+    "licensing": "N/A",
+    "raw_file_type": "PDF",
+    "residential_segmentation": "UNVERIFIED",
+    "variables": ["Capacity installed under CFA (MW)"],
+    "target_classification": "P0-B (Proposed)",
+    "status": "UNVERIFIED - PDF NOT ACCESSIBLE"
+  },
+  {
+    "dataset_id": "LS_UQ_3579_HISTORICAL_RESIDENTIAL_CAPACITY",
+    "publisher": "Parliament of India (Lok Sabha)",
+    "dataset_name": "Lok Sabha UQ 3579 (10.08.2023) - Residential Rooftop Solar Systems",
+    "access_date": "N/A",
+    "coverage": "State-wise",
+    "licensing": "N/A",
+    "raw_file_type": "PDF",
+    "residential_segmentation": "UNVERIFIED",
+    "variables": ["Capacity installed under National Portal (MW)"],
+    "target_classification": "P0-B (Proposed)",
+    "status": "UNVERIFIED - PDF NOT ACCESSIBLE"
+  }
+]

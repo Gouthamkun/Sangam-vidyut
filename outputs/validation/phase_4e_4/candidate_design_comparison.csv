@@ -1,0 +1,5 @@
+family,equation,bounds
+F1_Linear,w1*p_base + w2*sir + w3*aff,"[0,1]"
+F2_Normalized,w1*norm(p_base) + w2*sir + w3*aff,"[0,1]"
+F3_Additive,p_base + a*sir + b*aff,"[0,1]"
+F4_Logit,sigmoid(logit(p_base) + a*sir + b*aff),"(0,1)"

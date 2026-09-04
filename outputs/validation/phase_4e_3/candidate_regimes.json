@@ -1,0 +1,23 @@
+{
+  "DEAD": {
+    "description": "Cognitive and autonomous adoption unreachable. Probabilities are strictly bounded below thresholds.",
+    "weights": [0.4, 0.4, 0.2],
+    "thresholds": [0.3, 0.7]
+  },
+  "COGNITIVE-ACCESSIBLE": {
+    "description": "High p_base households can enter LLM routing independently. Median households require social influence (SIR) to trigger cognitive evaluation. Autonomous adoption reserved for high p_base + high SIR.",
+    "weights": [0.4, 0.4, 0.2],
+    "thresholds": [0.05, 0.20]
+  },
+  "BROAD-AUTONOMOUS": {
+    "description": "Large fraction of households can immediately adopt due to low upper threshold.",
+    "weights": [0.4, 0.4, 0.2],
+    "thresholds": [0.01, 0.05]
+  },
+  "RUNAWAY": {
+    "description": "Adoption cascades almost unconditionally independent of meaningful heterogeneity.",
+    "weights": [0.4, 0.4, 0.2],
+    "thresholds": [0.001, 0.01]
+  },
+  "recommended_regime": "COGNITIVE-ACCESSIBLE"
+}

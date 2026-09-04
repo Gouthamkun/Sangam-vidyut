@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Synthetic ConsumerAgent Population Schema",
+  "description": "Schema mapping HCES 2023-24 household records to the synthetic ConsumerAgent population",
+  "type": "object",
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "description": "Unique identifier for the synthetic agent (UUID or deterministic hash)"
+    },
+    "hces_household_key": {
+      "type": "string",
+      "description": "The original FSU+Stratum+HH key from HCES for provenance"
+    },
+    "state": {
+      "type": "string",
+      "description": "State or Union Territory (DIRECT HCES OBSERVATION)"
+    },
+    "district": {
+      "type": "string",
+      "description": "District code (DIRECT HCES OBSERVATION)"
+    },
+    "sector": {
+      "type": "string",
+      "enum": ["Urban", "Rural"],
+      "description": "Urban/Rural classification (DIRECT HCES OBSERVATION)"
+    },
+    "household_size": {
+      "type": "integer",
+      "description": "Number of household members (DIRECT HCES OBSERVATION)"
+    },
+    "dwelling_type": {
+      "type": "string",
+      "description": "Type of Dwelling Unit structure code (DIRECT HCES OBSERVATION). Strictly architectural, NOT tenure."
+    },
+    "home_owner": {
+      "type": "null",
+      "description": "Household tenure/ownership status. (UNAVAILABLE)"
+    },
+    "electricity_access": {
+      "type": "string",
+      "description": "Primary energy source for lighting (DIRECT HCES OBSERVATION)"
+    },
+    "free_electricity_indicator": {
+      "type": "integer",
+      "description": "Indicates receipt of free electricity (DIRECT HCES OBSERVATION)"
+    },
+    "monthly_consumption_expenditure": {
+      "type": "number",
+      "description": "Total monthly consumption expenditure for the household (DIRECT HCES OBSERVATION)"
+    },
+    "derived_mpce": {
+      "type": "number",
+      "description": "Derived Monthly Per Capita Consumption Expenditure (DERIVED from MCE / HH Size)"
+    },
+    "mpce_decile": {
+      "type": "integer",
+      "description": "National economic decile computed via survey-weighted quantiles (DERIVED)"
+    },
+    "survey_weight": {
+      "type": "number",
+      "description": "Original HCES Multiplier used for sampling probability (DIRECT HCES OBSERVATION)"
+    },
+    "system_size_distribution_kw": {
+      "type": "null",
+      "description": "Placeholder for system size capacity. Set to null/UNAVAILABLE (Phase 4D.7)"
+    }
+  },
+  "required": [
+    "agent_id",
+    "hces_household_key",
+    "state",
+    "sector",
+    "household_size",
+    "dwelling_type",
+    "electricity_access",
+    "monthly_consumption_expenditure",
+    "derived_mpce",
+    "mpce_decile",
+    "survey_weight"
+  ]
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "dataset_id": "LS_UQ_1698_PMSURYA_GHAR_COUNTS",
+    "publisher": "Parliament of India (MNRE)",
+    "dataset_name": "Lok Sabha Unstarred Question 1698 - PM-SGMBY Progress",
+    "access_date": "2026-09-02",
+    "coverage": "State-wise, Feb 2024 to July 2026",
+    "licensing": "Open Government Data",
+    "raw_file_type": "PDF",
+    "residential_segmentation": "DIRECT",
+    "variables": ["Installations", "Households", "Subsidy Released"],
+    "target_classification": "P0-A (Residential Installation Counts)",
+    "status": "VERIFIED AND EXTRACTED"
+  },
+  {
+    "dataset_id": "LS_UQ_1936_HISTORICAL_TOTAL_MW",
+    "publisher": "Parliament of India (MNRE)",
+    "dataset_name": "Lok Sabha Unstarred Question 1936 - Total Solar Capacity",
+    "access_date": "2026-09-02",
+    "coverage": "State-wise, Cumulative to Oct 2023",
+    "licensing": "Open Government Data",
+    "raw_file_type": "PDF",
+    "residential_segmentation": "NONE (Blended C&I, Ground, Off-grid)",
+    "variables": ["Total Solar Capacity (MW)"],
+    "target_classification": "P1 (Total Solar Capacity)",
+    "status": "VERIFIED AND EXTRACTED"
+  },
+  {
+    "dataset_id": "MISSING_HISTORICAL_RESIDENTIAL_COUNTS",
+    "publisher": "N/A",
+    "dataset_name": "Pre-2024 Continuous State-wise Residential Installation Counts",
+    "access_date": "N/A",
+    "coverage": "2015 - 2023",
+    "licensing": "N/A",
+    "raw_file_type": "N/A",
+    "residential_segmentation": "DIRECT",
+    "variables": ["Residential Consumers / Installations"],
+    "target_classification": "P0-A",
+    "status": "NO VERIFIED CONTINUOUS PRE-2024 RESIDENTIAL INSTALLATION COUNT SERIES HAS BEEN IDENTIFIED."
+  }
+]

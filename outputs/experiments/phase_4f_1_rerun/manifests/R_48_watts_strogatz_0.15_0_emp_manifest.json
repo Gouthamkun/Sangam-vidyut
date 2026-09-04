@@ -1,0 +1,21 @@
+{
+  "run_id": "R_48_watts_strogatz_0.15_0_emp",
+  "experiment_id": "phase_4f_1",
+  "model_class": "DETERMINISTIC_EMPIRICAL_ABM",
+  "topology": "watts_strogatz",
+  "beta": 0.15,
+  "seed": 48,
+  "population_size": 5000,
+  "horizon": 24,
+  "config_hash": "mock",
+  "calibration_hash": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "artifact_path": "outputs/experiments/phase_4f_1_rerun/raw/R_48_watts_strogatz_0.15_0_emp_summary.json",
+  "trajectory_path": "outputs/experiments/phase_4f_1_rerun/raw/R_48_watts_strogatz_0.15_0_emp_trajectory.csv",
+  "status": "COMPLETED",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "calibration_artifact_note": "Empirical baseline artifact used for prediction.",
+  "provider": "N/A",
+  "baseline_provider": "empirical",
+  "summary_sha256": "4fcaacfdea23d9cc98296e20f275f09018f967c77d0205764a2cf218c60fe1fc",
+  "trajectory_sha256": "b723eed05c7916d60b03af03a5644f552c4150599b419268d23aa6a82e2eceb9"
+}

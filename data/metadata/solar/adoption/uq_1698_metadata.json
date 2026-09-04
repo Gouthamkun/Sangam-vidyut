@@ -1,0 +1,10 @@
+{
+  "publisher": "Parliament of India (MNRE)",
+  "question_number": "1698",
+  "answer_date": "29.07.2026",
+  "reference_date": "27.07.2026",
+  "source_file": "lok_sabha_uq_1698_pmsuryaghar.pdf",
+  "source_sha256": "618fcbe74a7b2ddcbd2190bca30eb02c84bcdfd19f5f932ce3959135da1551ce",
+  "extraction_method": "pypdf text extraction with regex parsing",
+  "processing_version": "1.0"
+}

@@ -1,0 +1,10 @@
+{
+  "publisher": "Parliament of India (MNRE)",
+  "question_number": "1936",
+  "answer_date": "14.12.2023",
+  "reference_date": "31.10.2023",
+  "source_file": "lok_sabha_uq_1936_historical.pdf",
+  "source_sha256": "8c69387e47043cedbe8214ad867589603cc6290d642abf60f71ce7237eb86eca",
+  "extraction_method": "pypdf text extraction with regex parsing",
+  "processing_version": "1.0"
+}

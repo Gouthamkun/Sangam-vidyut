@@ -1,0 +1,5 @@
+family,regime,notes
+F1_Linear,DEAD,Empirical max (0.11) collapses score < 0.3 without extreme modifiers.
+F2_Normalized,BROAD-AUTONOMOUS,"Normalization inflates max to 1.0, easily crossing 0.7 thresholds."
+F3_Additive,COGNITIVE-ACCESSIBLE,Retains true p_base meaning while allowing modifiers to push into 0.05-0.20 range safely.
+F4_Logit,DEAD,"Since p_base is so small (e.g. 1e-4), logit is ~ -9. Modifiers (+2, +1) barely move logit to -6, sigmoid is still ~0.002."

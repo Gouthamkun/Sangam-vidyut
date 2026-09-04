@@ -1,43 +1,30 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
+# Phase 4F generated raw simulation data
+outputs/experiments/*/raw/
+outputs/experiments/*/checkpoints/
+outputs/experiments/*/logs/
 
-# Virtual environments
-.venv/
-venv/
-env/
+# Superseded / invalidated experiment outputs
+outputs/experiments/phase_4f_1_invalidated_initialization/
+outputs/experiments/exp3b_*/
+outputs/experiments/exp4c_*/
+outputs/experiments/smoke_exp4c_*/
 
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
+# Interim generated data
+data/interim/
 
-# IDE
-.vscode/
-.idea/
+# Local scratch/debug scripts
+/analyze_exp4c.py
+/run_exp3b.py
+/run_exp4c.py
+/smoke_test_4c.py
+/test_seed.py
 
-# Environment / secrets
-.env
-.env.*
-!.env.example
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Data generated during experiments
-data/raw/
-data/processed/
-data/simulated/
-
-# Model/checkpoint files
-*.pt
-*.pth
-*.ckpt
-
-# Logs
-*.log
-
-# Streamlit
-.streamlit/secrets.toml
+# Local PDF/data extraction dumps
+/domestic_lines.txt
+/dump_cea.txt
+/extracted.txt
+/historical_dump.txt
+/ls3579_dump.txt
+/pmsuryaghar_dump.txt
+/rs210_dump.txt
+/layout_sheet2.csv

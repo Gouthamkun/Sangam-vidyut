@@ -1,0 +1,21 @@
+{
+  "run_id": "R_42_STATIC_1000.0_emp",
+  "experiment_id": "phase_4f_1",
+  "model_class": "STATIC_BASELINE",
+  "topology": "NA",
+  "beta": "NA",
+  "seed": 42,
+  "population_size": 5000,
+  "horizon": 24,
+  "config_hash": "mock",
+  "calibration_hash": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "artifact_path": "outputs/experiments/phase_4f_1_rerun/raw/R_42_STATIC_1000.0_emp_summary.json",
+  "trajectory_path": "outputs/experiments/phase_4f_1_rerun/raw/R_42_STATIC_1000.0_emp_trajectory.csv",
+  "status": "COMPLETED",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "calibration_artifact_note": "Empirical baseline artifact used for prediction.",
+  "provider": "N/A",
+  "baseline_provider": "empirical",
+  "summary_sha256": "829952fa96ef8d8b00e5105f45e0c4637ca0606d9b9fb5b2d23483aa4c97dc0c",
+  "trajectory_sha256": "3bedd96b31c2a31eb52a0bb9a4a0652387167e55d14d18700a4558a72bd25638"
+}

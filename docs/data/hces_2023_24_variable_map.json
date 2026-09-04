@@ -1,0 +1,110 @@
+[
+  {
+    "level": "03",
+    "raw_variable": "State",
+    "label": "State Code",
+    "type": "string",
+    "unit": "categorical",
+    "coding": "NSSO standard state codes",
+    "consumer_agent_target": "state",
+    "transformation": "Map to string abbreviations using tabulation_state_code.xlsx",
+    "source_reference": "Level 03 Section 3",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "03",
+    "raw_variable": "Sector",
+    "label": "Urban/Rural Sector",
+    "type": "string",
+    "unit": "categorical",
+    "coding": "1=Rural, 2=Urban",
+    "consumer_agent_target": "urban_rural",
+    "transformation": "Convert to boolean (is_urban)",
+    "source_reference": "Level 03 Section 3",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "03",
+    "raw_variable": "HH_Size_FDQ",
+    "label": "Household Size",
+    "type": "integer",
+    "unit": "persons",
+    "coding": "count",
+    "consumer_agent_target": "household_size",
+    "transformation": "None",
+    "source_reference": "Level 03 Section 3",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "03",
+    "raw_variable": "Type_of_Dwelling_Unit",
+    "label": "Type of Dwelling Unit",
+    "type": "string",
+    "unit": "categorical",
+    "coding": "NSSO dwelling codes (e.g. Pucca, Kachha)",
+    "consumer_agent_target": "roof_suitability",
+    "transformation": "Map Pucca to 1 (suitable), otherwise 0",
+    "source_reference": "Level 03 Section 3",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "03",
+    "raw_variable": "Energy_Source_Lighting",
+    "label": "Primary source of energy for lighting",
+    "type": "string",
+    "unit": "categorical",
+    "coding": "NSSO energy codes",
+    "consumer_agent_target": "electricity_access",
+    "transformation": "Map electricity codes to 1, others to 0",
+    "source_reference": "Level 03 Section 3",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "15",
+    "raw_variable": "MONTHLY_CONSUMPTION_EXP",
+    "label": "Monthly Consumption Expenditure",
+    "type": "float",
+    "unit": "INR",
+    "coding": "continuous",
+    "consumer_agent_target": "income_proxy",
+    "transformation": "Divide by HH_Size_FDQ for MPCE, rank into percentiles",
+    "source_reference": "Level 15 Section 1.1",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "06",
+    "raw_variable": "Total_Consumption_Value",
+    "label": "Value of Fuel and Light Consumption",
+    "type": "float",
+    "unit": "INR",
+    "coding": "continuous",
+    "consumer_agent_target": "electricity_expenditure",
+    "transformation": "Filter for Item_Code == 'Electricity', aggregate by HH Key",
+    "source_reference": "Level 06 Section 7",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "07",
+    "raw_variable": "Free_electricity",
+    "label": "Beneficiary of Free Electricity",
+    "type": "string",
+    "unit": "categorical",
+    "coding": "yes/no codes",
+    "consumer_agent_target": "free_electricity_subsidy",
+    "transformation": "Map to boolean",
+    "source_reference": "Level 07 Section 4.2",
+    "confidence_status": "verified"
+  },
+  {
+    "level": "All",
+    "raw_variable": "Multiplier",
+    "label": "Survey Weight",
+    "type": "integer",
+    "unit": "weight",
+    "coding": "continuous",
+    "consumer_agent_target": "statistical_weight",
+    "transformation": "Divide by 100 per NSSO estimation methodology",
+    "source_reference": "All Levels",
+    "confidence_status": "verified"
+  }
+]

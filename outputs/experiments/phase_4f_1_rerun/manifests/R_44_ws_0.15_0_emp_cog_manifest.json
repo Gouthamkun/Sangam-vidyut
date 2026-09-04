@@ -1,0 +1,23 @@
+{
+  "run_id": "R_44_ws_0.15_0_emp_cog",
+  "experiment_id": "phase_4f_1",
+  "model_class": "HYBRID_COGNITIVE_ABM",
+  "topology": "watts_strogatz",
+  "beta": 0.15,
+  "seed": 44,
+  "population_size": 5000,
+  "horizon": 24,
+  "config_hash": "mock",
+  "calibration_hash": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "artifact_path": "outputs/experiments/phase_4f_1_rerun/raw/R_44_ws_0.15_0_emp_cog_summary.json",
+  "trajectory_path": "outputs/experiments/phase_4f_1_rerun/raw/R_44_ws_0.15_0_emp_cog_trajectory.csv",
+  "status": "COMPLETED",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "calibration_artifact_note": "Empirical baseline artifact used for prediction.",
+  "provider": "mock",
+  "model_identifier": "mock_llm",
+  "prompt_version": "v1",
+  "baseline_provider": "empirical",
+  "summary_sha256": "1fd8522fbfb090b5c7416765e73302b81f6a3313a4d839f715a1327ff40c1582",
+  "trajectory_sha256": "938fbc87f4b2dac0002319c409275ee3e28656bf6334809db59524217b77ef64"
+}

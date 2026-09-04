@@ -16,10 +16,38 @@ class LLMInterface:
         """
         Takes the ambiguous agent context and returns a boolean adoption decision.
         """
+        from src.simulation.llm.workflow import NORMALIZATION_EVENTS
+        initial_norm_count = len(NORMALIZATION_EVENTS)
+        
         try:
-            return self.provider.generate_decision(agent_context)
+            decision = self.provider.generate_decision(agent_context)
+            
+            # Augment any newly recorded normalization events with context metadata
+            for i in range(initial_norm_count, len(NORMALIZATION_EVENTS)):
+                NORMALIZATION_EVENTS[i].update({
+                    "provider": agent_context.get("provider", "unknown"),
+                    "model_identifier": agent_context.get("model_identifier", "unknown"),
+                    "prompt_version": agent_context.get("prompt_version", "unknown"),
+                    "seed": getattr(self.provider.config.simulation, 'seed', "unknown"),
+                    "decision_succeeded": True,
+                    "fallback_triggered": False
+                })
+            
+            return decision
         except Exception as e:
             self.failures += 1
+            
+            # Augment any newly recorded normalization events with context metadata
+            for i in range(initial_norm_count, len(NORMALIZATION_EVENTS)):
+                NORMALIZATION_EVENTS[i].update({
+                    "provider": agent_context.get("provider", "unknown"),
+                    "model_identifier": agent_context.get("model_identifier", "unknown"),
+                    "prompt_version": agent_context.get("prompt_version", "unknown"),
+                    "seed": getattr(self.provider.config.simulation, 'seed', "unknown"),
+                    "decision_succeeded": False,
+                    "fallback_triggered": self.fallback_enabled
+                })
+                
             if self.fallback_enabled:
                 self.fallbacks += 1
                 # Deterministic fallback: Use mathematical score

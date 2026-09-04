@@ -1,0 +1,9 @@
+{
+  "dataset_id": "MNRE_BENCHMARK_2021_22",
+  "source": "Ministry of New and Renewable Energy (MNRE)",
+  "source_url": "https://mnre.gov.in",
+  "access_date": "2026-09-04",
+  "checksum": "530ef1d7e64cd702197699c43c5fec30c6c0ee3106ff30f9f08fa93cea011323",
+  "raw_filename": "benchmark_costs_2021_22.json",
+  "processing_script": "ingest_mnre_costs.py"
+}

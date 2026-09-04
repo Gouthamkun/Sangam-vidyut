@@ -1,0 +1,3 @@
+subsidy,n_paired,det_mean,cog_mean,diff,effect_size,llm_calls,cache_hits,cache_misses,failures
+2000.0,10,1.0,1.0,0.0,UNSTABLE / NOT INFORMATIVE,6418.8,N/A (Not Persisted),N/A (Not Persisted),0.0
+3000.0,10,0.933,0.933,0.0,0.0,2742.8,N/A (Not Persisted),N/A (Not Persisted),0.0

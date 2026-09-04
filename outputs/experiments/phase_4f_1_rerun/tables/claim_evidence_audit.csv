@@ -1,0 +1,7 @@
+question,claim,condition,n,metric,observed_value,effect_size,evidence_status,recommended_wording
+Q1,ABM differs from Static,"ABM vs Static (beta=0.15, WS)",40,final_adoption,0.0,0.0,NOT_SUPPORTED,observed under the tested configuration
+Q2,Topology affects diffusion,WS vs BA,60,final_adoption,0.0,0.0,NOT_SUPPORTED,observed under the tested configuration
+Q3,Beta affects diffusion,Beta 0.3 vs 0.05,20,final_adoption,0.0,0.0,NOT_SUPPORTED,observed under the tested configuration
+Q4,Heterogeneity affects dynamics,"Empirical vs Constant (beta=0.15, WS)",40,final_adoption,0.0,0.0,NOT_SUPPORTED,observed under the tested configuration
+Q5,Subsidy response differs,"Subsidy 5000 vs 0 (beta=0.15, WS)",40,final_adoption,499.2,927.5427444905937,SUPPORTED,observed under the tested configuration
+Q6,Cognitive deliberation alters dynamics,Hybrid vs Deterministic,20,final_adoption,0.8,0.0,NOT_SUPPORTED,observed under the tested configuration

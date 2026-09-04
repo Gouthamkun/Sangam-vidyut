@@ -29,9 +29,13 @@ class ConsumerAgent(mesa.Agent):
         if not self.is_adopter:
             # Mathematical probability calculation
             
-            # Feature vector for logreg
-            features = pd.DataFrame([[self.income, self.home_owner]])
-            p_base = self.model.baseline_model.predict_proba(features)[0]
+            # Fetch baseline logic based on provider
+            if getattr(self.model, "baseline_provider", None) is not None:
+                p_base = self.model.baseline_provider.predict(self)
+            else:
+                # Legacy feature vector for logreg
+                features = pd.DataFrame([[self.income, self.home_owner]])
+                p_base = self.model.baseline_model.predict_proba(features)[0]
             
             # SIR/Social influence score
             neighbors = self.model.grid.get_neighbors(self.pos, include_center=False)
@@ -90,7 +94,9 @@ class ConsumerAgent(mesa.Agent):
                     "adopting_neighbors": infected_neighbors,
                     "total_neighbors": len(neighbors),
                     "prompt_version": self.model.config.llm.prompt_version,
-                    "model_identifier": self.model.config.llm.model
+                    "model_identifier": self.model.config.llm.model,
+                    "provider": self.model.config.llm.provider,
+                    "temperature": self.model.config.llm.temperature
                 }
                 
                 try:

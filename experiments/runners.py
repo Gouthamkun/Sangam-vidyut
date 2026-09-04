@@ -25,6 +25,10 @@ def get_base_config(exp_config: ExperimentConfig, multi_config: Optional[MultiSe
             exp_config.topology = params["topology"]
         if "beta" in params:
             config.sir.beta = params["beta"]
+        if "subsidy" in params:
+            config.government.base_subsidy = params["subsidy"]
+        if "llm_model" in params:
+            config.llm.model = params["llm_model"]
         if "ws_p" in params:
             config.network.ws_p = params["ws_p"]
         if "ws_k" in params:
@@ -64,9 +68,10 @@ def run_static_baseline(exp_config: ExperimentConfig, multi_config: Optional[Mul
     
     consumer_agents = [a for a in model.agents if isinstance(a, ConsumerAgent)]
     
-    income_data = [a.income for a in consumer_agents]
-    home_owner_data = [a.home_owner for a in consumer_agents]
-    X = pd.DataFrame({'income': income_data, 'home_owner': home_owner_data})
+    # Do not use string column names to avoid sklearn feature-name mismatch warnings,
+    # because ConsumerAgent and mock_fit both use default integer column names.
+    feature_rows = [[a.income, a.home_owner] for a in consumer_agents]
+    X = pd.DataFrame(feature_rows)
     
     probs = model.baseline_model.predict_proba(X)
     adoptions = (probs >= 0.5).astype(int)
@@ -189,6 +194,11 @@ def run_abm(exp_config: ExperimentConfig, multi_config: Optional[MultiSeedExperi
         seed=exp_config.seed,
         population=exp_config.n_agents,
         timesteps=exp_config.timesteps,
+        provider=model.llm_interface.provider.__class__.__name__,
+        model_identifier=config.llm.model if config.llm.provider == "langgraph" else "mock",
+        prompt_version="v1",
+        model_configuration={"temperature": 0.1} if config.llm.provider == "langgraph" else {},
+        cache_scope="seed",
         final_adoption=final_count,
         final_adoption_rate=final_count / exp_config.n_agents,
         cumulative_adoptions=cumulative,

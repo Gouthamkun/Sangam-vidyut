@@ -1,0 +1,16 @@
+[
+  {
+    "provider": "legacy",
+    "final_adoption": 0.01,
+    "rule_decisions": 1980,
+    "llm_decisions": 0,
+    "llm_calls": 0
+  },
+  {
+    "provider": "empirical",
+    "final_adoption": 0.01,
+    "rule_decisions": 1980,
+    "llm_decisions": 0,
+    "llm_calls": 0
+  }
+]

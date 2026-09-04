@@ -1,0 +1,1 @@
+run_id,model_class,topology,beta,seed,subsidy,p_base_mode,final_adoption,peak_adoption_velocity,tipping_occurred,tipping_quarter,time_to_25_percent,time_to_50_percent,total_llm_calls,total_llm_failures

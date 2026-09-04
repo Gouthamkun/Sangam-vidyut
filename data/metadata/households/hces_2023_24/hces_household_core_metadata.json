@@ -1,0 +1,14 @@
+{
+  "dataset": "HCES 2023-24 Core",
+  "records": 261953,
+  "unmatched_03": 0,
+  "unmatched_15": 0,
+  "missing_mpce": 0,
+  "levels_used": [
+    "01",
+    "03",
+    "07",
+    "15"
+  ],
+  "electricity_item_code": "UNVERIFIED_SKIPPED"
+}

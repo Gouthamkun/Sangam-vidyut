@@ -1,0 +1,254 @@
+[
+  {
+    "state":"Gujarat",
+    "installations":766278.0,
+    "domestic_consumers_mar2024":14881962.0,
+    "observed_rate":0.0514903882,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Maharashtra",
+    "installations":692853.0,
+    "domestic_consumers_mar2024":25047631.0,
+    "observed_rate":0.0276614184,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Uttar Pradesh",
+    "installations":703661.0,
+    "domestic_consumers_mar2024":29869263.0,
+    "observed_rate":0.0235580302,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Kerala",
+    "installations":305977.0,
+    "domestic_consumers_mar2024":10282336.0,
+    "observed_rate":0.0297575376,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Rajasthan",
+    "installations":272818.0,
+    "domestic_consumers_mar2024":12265604.0,
+    "observed_rate":0.0222425247,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Andhra Pradesh",
+    "installations":254701.0,
+    "domestic_consumers_mar2024":15246439.0,
+    "observed_rate":0.0167056058,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Madhya Pradesh",
+    "installations":156128.0,
+    "domestic_consumers_mar2024":12685982.0,
+    "observed_rate":0.0123071277,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Assam",
+    "installations":160077.0,
+    "domestic_consumers_mar2024":6259737.0,
+    "observed_rate":0.0255724801,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Odisha",
+    "installations":143890.0,
+    "domestic_consumers_mar2024":9018476.0,
+    "observed_rate":0.0159550239,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Haryana",
+    "installations":114889.0,
+    "domestic_consumers_mar2024":5969987.0,
+    "observed_rate":0.0192444305,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Tamil Nadu",
+    "installations":85742.0,
+    "domestic_consumers_mar2024":24705661.0,
+    "observed_rate":0.0034705406,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Uttarakhand",
+    "installations":96203.0,
+    "domestic_consumers_mar2024":2161970.0,
+    "observed_rate":0.0444978422,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Chhattisgarh",
+    "installations":82920.0,
+    "domestic_consumers_mar2024":null,
+    "observed_rate":null,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Telangana",
+    "installations":54668.0,
+    "domestic_consumers_mar2024":12949043.0,
+    "observed_rate":0.0042217792,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Jammu & Kashmir",
+    "installations":38953.0,
+    "domestic_consumers_mar2024":1922943.0,
+    "observed_rate":0.0202569707,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Karnataka",
+    "installations":22952.0,
+    "domestic_consumers_mar2024":19502012.0,
+    "observed_rate":0.0011769042,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Bihar",
+    "installations":24328.0,
+    "domestic_consumers_mar2024":21318546.0,
+    "observed_rate":0.001141166,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Punjab",
+    "installations":17296.0,
+    "domestic_consumers_mar2024":7553965.0,
+    "observed_rate":0.0022896585,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Delhi",
+    "installations":10575.0,
+    "domestic_consumers_mar2024":5795912.0,
+    "observed_rate":0.0018245619,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Himachal Pradesh",
+    "installations":11835.0,
+    "domestic_consumers_mar2024":2244217.0,
+    "observed_rate":0.0052735542,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Meghalaya",
+    "installations":61.0,
+    "domestic_consumers_mar2024":373435.0,
+    "observed_rate":0.0001633484,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Puducherry",
+    "installations":4751.0,
+    "domestic_consumers_mar2024":357074.0,
+    "observed_rate":0.0133053653,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Goa",
+    "installations":3358.0,
+    "domestic_consumers_mar2024":568356.0,
+    "observed_rate":0.0059082688,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Tripura",
+    "installations":4447.0,
+    "domestic_consumers_mar2024":900453.0,
+    "observed_rate":0.0049386253,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Jharkhand",
+    "installations":3279.0,
+    "domestic_consumers_mar2024":41690.0,
+    "observed_rate":0.0786519549,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"West Bengal",
+    "installations":3132.0,
+    "domestic_consumers_mar2024":23470523.0,
+    "observed_rate":0.000133444,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Ladakh",
+    "installations":2028.0,
+    "domestic_consumers_mar2024":45301.0,
+    "observed_rate":0.0447672237,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Manipur",
+    "installations":1548.0,
+    "domestic_consumers_mar2024":474896.0,
+    "observed_rate":0.0032596611,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Chandigarh",
+    "installations":1375.0,
+    "domestic_consumers_mar2024":333392.0,
+    "observed_rate":0.0041242741,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Mizoram",
+    "installations":1347.0,
+    "domestic_consumers_mar2024":264302.0,
+    "observed_rate":0.0050964427,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Lakshadweep",
+    "installations":1186.0,
+    "domestic_consumers_mar2024":21124.0,
+    "observed_rate":0.0561446696,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Dadra & Nagar Haveli and Daman & Diu",
+    "installations":1138.0,
+    "domestic_consumers_mar2024":null,
+    "observed_rate":null,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Nagaland",
+    "installations":437.0,
+    "domestic_consumers_mar2024":307014.0,
+    "observed_rate":0.0014233879,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Andaman & Nicobar Islands",
+    "installations":407.0,
+    "domestic_consumers_mar2024":null,
+    "observed_rate":null,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Sikkim",
+    "installations":59.0,
+    "domestic_consumers_mar2024":105166.0,
+    "observed_rate":0.0005610178,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  },
+  {
+    "state":"Arunachal Pradesh",
+    "installations":1.0,
+    "domestic_consumers_mar2024":271198.0,
+    "observed_rate":0.0000036873,
+    "NOTE":"INVALID \/ HISTORICAL TARGET - INCOMPLETE CEA DENOMINATOR"
+  }
+]

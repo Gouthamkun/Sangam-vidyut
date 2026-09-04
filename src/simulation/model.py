@@ -48,8 +48,14 @@ class SangamVidyutModel(mesa.Model):
         self.grid = mesa.space.NetworkGrid(self.G)
         
         # Baseline model initialization
-        self.baseline_model = AdoptionLogisticRegression(random_state=config.simulation.seed)
-        self.baseline_model.mock_fit(n_features=2)
+        if config.simulation.baseline_provider == "empirical":
+            from src.models.statistical.empirical_provider import EmpiricalBaselineProvider
+            self.baseline_provider = EmpiricalBaselineProvider()
+            self.baseline_model = None # Exclude legacy
+        else:
+            self.baseline_model = AdoptionLogisticRegression(random_state=config.simulation.seed)
+            self.baseline_model.mock_fit(n_features=2)
+            self.baseline_provider = None
         
         # Singleton Agents
         self.government = GovernmentAgent(self)

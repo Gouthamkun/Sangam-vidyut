@@ -1,0 +1,7 @@
+question,claim,condition,n,mean_difference,effect_size,confidence_interval,evidence_status,recommended_claim
+Q1,ABM diverges from static baseline,"ABM vs Static (Subsidy=0, WS, Beta=0.15)",20,0.0,0.0,N/A,NOT_SUPPORTED,No significant difference observed under the tested conditions
+Q2,Topology affects diffusion,"WS vs BA (Subsidy=0, Beta=0.15)",20,0.0,0.0,N/A,NOT_SUPPORTED,No effect observed under the tested conditions
+Q3,Beta affects diffusion,"Beta 0.30 vs 0.05 (Subsidy=0, WS)",20,0.0,0.0,N/A,NOT_SUPPORTED,No effect observed under the tested conditions
+Q4,Heterogeneity alters dynamics,"Empirical vs Constant (Subsidy=0, WS, Beta=0.15)",20,0.0,0.0,N/A,NOT_SUPPORTED,No effect observed under the tested conditions
+Q5,Subsidy increases adoption non-linearly,"Subsidy 5000 vs 0 (WS, Beta=0.15)",20,499.2,894.9871826695938,N/A,SUPPORTED,Subsidy is associated with nonlinear / threshold-like response
+Q6,Cognition alters behavior,Cognitive vs Deterministic,20,0.0,0.0,N/A,NOT_SUPPORTED,No observable effect or unestimable from these runs

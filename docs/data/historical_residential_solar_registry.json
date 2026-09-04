@@ -1,0 +1,31 @@
+[
+  {
+    "dataset_id": "LS_RTS_PHASE_II_RESIDENTIAL_CONSUMERS",
+    "publisher": "Parliament of India (MNRE)",
+    "dataset_name": "Lok Sabha Unstarred Question - State-wise Residential Consumers under RTS Phase II",
+    "official_url": "https://sansad.in/ls/questions/questions-and-answers",
+    "search_parameters": "Keywords: 'Rooftop Solar Phase-II', 'residential consumers'. Target: Late 2023 or Early 2024 snapshot.",
+    "access_date": "NOT VERIFIED (To be manually acquired)",
+    "coverage": "State-wise, Cumulative up to early 2024",
+    "licensing": "Open Government Data",
+    "raw_file_type": "PDF",
+    "expected_download_format": "PDF Annexure",
+    "residential_segmentation": "DIRECT",
+    "variables": ["Number of Residential Consumers / Installations"],
+    "priority": "P0"
+  },
+  {
+    "dataset_id": "MNRE_ANNUAL_REPORT_PHASE_II",
+    "publisher": "Ministry of New and Renewable Energy (MNRE)",
+    "dataset_name": "MNRE Annual Report (2022-23 or 2023-24)",
+    "official_url": "https://mnre.gov.in/annual-report/",
+    "access_date": "NOT VERIFIED",
+    "coverage": "State-wise",
+    "licensing": "Open Government Data",
+    "raw_file_type": "PDF",
+    "expected_download_format": "PDF Table",
+    "residential_segmentation": "DIRECT",
+    "variables": ["Beneficiaries / Installations under Phase II"],
+    "priority": "P1"
+  }
+]

@@ -36,7 +36,9 @@ class BaseLLMProvider(ABC):
             "adopting_neighbors": int(context.get("adopting_neighbors", 0)),
             "total_neighbors": int(context.get("total_neighbors", 4)),
             "prompt_version": context.get("prompt_version", "v1"),
-            "model_identifier": context.get("model_identifier", "mock")
+            "model_identifier": context.get("model_identifier", "mock"),
+            "provider": context.get("provider", "unknown"),
+            "temperature": context.get("temperature", 0.1)
         }
         
         return hashlib.md5(json.dumps(cache_context, sort_keys=True).encode()).hexdigest()
@@ -51,6 +53,9 @@ class BaseLLMProvider(ABC):
         self.cache_misses += 1
         self.call_count += 1
         
+        if self.call_count % 10 == 0:
+            print(f"LLM Call {self.call_count}, Misses: {self.cache_misses}, Hits: {self.cache_hits}", flush=True)
+            
         result = self._generate(context)
         
         if self.config.llm.cache_enabled:
@@ -96,8 +101,6 @@ class LangGraphLLMProvider(BaseLLMProvider):
         if decision:
             if decision.decision not in ["ADOPT", "WAIT"]:
                 raise ValueError(f"Invalid decision literal: {decision.decision}")
-            if not (0.0 <= decision.confidence <= 1.0):
-                raise ValueError(f"Invalid confidence bounds: {decision.confidence}")
             return decision.decision == "ADOPT"
             
         raise ValueError("Invalid structured output from LangGraph")

@@ -1,0 +1,5 @@
+interaction,status
+Subsidy x Topology,"MEASURABLE INTERACTION (Inactive when blocked, active when diffusion reachable)"
+Subsidy x Beta,MEASURABLE INTERACTION (Velocity scales conditionally upon affordability)
+Subsidy x Heterogeneity,MEASURABLE INTERACTION (Heterogeneity bridges gaps only in transition region)
+Subsidy x Cognition,NO DETECTABLE INTERACTION (MockLLM noise canceled symmetrically)

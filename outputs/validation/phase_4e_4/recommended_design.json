@@ -1,0 +1,6 @@
+{
+  "recommended_family": "Candidate Family 1: CURRENT LINEAR (with shifted COGNITIVE-ACCESSIBLE thresholds)",
+  "alternative_family": "Candidate Family 3: ADDITIVE SOCIAL/ECONOMIC PRESSURE",
+  "rationale": "Family 1 preserves linear predictability and legacy reproducibility completely. When paired with COGNITIVE-ACCESSIBLE thresholds [0.05, 0.20], it perfectly maps empirical scale into behavioral ranges without mathematically complex distortions (F4) or artificial normalization (F2). F3 is mathematically cleaner for probabilities but requires discarding legacy weight tuning.",
+  "target_leakage_safeguard": "Thresholds must be selected based strictly on structural reachability (Phase 4E.3), not by fitting PM Surya Ghar installation curves."
+}

@@ -1,0 +1,10 @@
+{
+  "publisher": "Parliament of India (Rajya Sabha)",
+  "question_number": "210",
+  "answer_date": "08.08.2023",
+  "reference_date": "30.06.2023",
+  "source_file": "rajya_sabha_sq_210_residential_capacity_phase2_2023.pdf",
+  "source_sha256": "57bd4dff4d64f28adae5de539448b9435dc89fd468586dc194490c7f646793e0",
+  "extraction_method": "pypdf text extraction with regex parsing",
+  "processing_version": "1.0"
+}

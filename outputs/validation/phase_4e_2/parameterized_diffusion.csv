@@ -1,0 +1,13 @@
+provider,topology,beta_level,final_adoption,peak_new_adoptions,tipping_quarter
+legacy,watts_strogatz,low,0.01,0,-1
+legacy,watts_strogatz,intermediate,0.01,0,-1
+legacy,watts_strogatz,high,0.01,0,-1
+legacy,barabasi_albert,low,0.01,0,-1
+legacy,barabasi_albert,intermediate,0.01,0,-1
+legacy,barabasi_albert,high,0.01,0,-1
+empirical,watts_strogatz,low,0.01,0,-1
+empirical,watts_strogatz,intermediate,0.01,0,-1
+empirical,watts_strogatz,high,0.01,0,-1
+empirical,barabasi_albert,low,0.01,0,-1
+empirical,barabasi_albert,intermediate,0.01,0,-1
+empirical,barabasi_albert,high,0.01,0,-1

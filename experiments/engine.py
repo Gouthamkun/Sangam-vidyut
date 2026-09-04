@@ -56,9 +56,12 @@ def aggregate_results(name: str, model_type: str, results: List[ExperimentResult
     t50s = [r.time_to_50_percent for r in results if r.time_to_50_percent is not None]
     
     return AggregatedResult(
-        experiment_name=name,
-        model_type=model_type,
+        experiment_name=results[0].experiment_id.rsplit('_seed_', 1)[0],
+        model_type=results[0].model_type,
         num_seeds=len(results),
+        provider=results[0].provider,
+        model_identifier=results[0].model_identifier,
+        prompt_version=results[0].prompt_version,
         mean_final_adoption_rate=statistics.mean(rates),
         std_final_adoption_rate=statistics.stdev(rates) if len(rates) > 1 else 0.0,
         min_final_adoption_rate=min(rates),

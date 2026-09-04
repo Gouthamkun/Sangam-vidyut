@@ -1,0 +1,16 @@
+[
+  {
+    "provider": "legacy",
+    "mean_final_adoption": 0.01,
+    "std_final_adoption": 0.0,
+    "min_final_adoption": 0.01,
+    "max_final_adoption": 0.01
+  },
+  {
+    "provider": "empirical",
+    "mean_final_adoption": 0.010400000000000001,
+    "std_final_adoption": 0.0008,
+    "min_final_adoption": 0.01,
+    "max_final_adoption": 0.012
+  }
+]

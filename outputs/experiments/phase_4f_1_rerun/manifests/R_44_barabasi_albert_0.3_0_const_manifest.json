@@ -1,0 +1,21 @@
+{
+  "run_id": "R_44_barabasi_albert_0.3_0_const",
+  "experiment_id": "phase_4f_1",
+  "model_class": "DETERMINISTIC_EMPIRICAL_ABM",
+  "topology": "barabasi_albert",
+  "beta": 0.3,
+  "seed": 44,
+  "population_size": 5000,
+  "horizon": 24,
+  "config_hash": "mock",
+  "calibration_hash": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "artifact_path": "outputs/experiments/phase_4f_1_rerun/raw/R_44_barabasi_albert_0.3_0_const_summary.json",
+  "trajectory_path": "outputs/experiments/phase_4f_1_rerun/raw/R_44_barabasi_albert_0.3_0_const_trajectory.csv",
+  "status": "COMPLETED",
+  "calibration_artifact_sha256": null,
+  "calibration_artifact_note": "Not used as predictor; overriden with ConstantProvider mean.",
+  "provider": "N/A",
+  "baseline_provider": "constant",
+  "summary_sha256": "ba7c0952855beb5d84a9ad02b46fb30b301d76fb2b97254ce8f2b7410215b84d",
+  "trajectory_sha256": "ea5d32a45288250083ec6b07d57851ba3cc9575e84d9a58f148b54eb685b6b01"
+}
