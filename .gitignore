@@ -1,3 +1,11 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+data/raw/
+data/processed/
+scratch/
+
 # Phase 4F generated raw simulation data
 outputs/experiments/*/raw/
 outputs/experiments/*/checkpoints/
