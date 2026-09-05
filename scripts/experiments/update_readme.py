@@ -1,4 +1,6 @@
-# Sangam Vidyut
+import os
+
+README_CONTENT = """# Sangam Vidyut
 
 Sangam Vidyut is an India-calibrated, bottom-up agent-based simulation for studying nonlinear residential rooftop-solar adoption under household heterogeneity, social-network diffusion, and policy feedback.
 
@@ -127,7 +129,7 @@ This is a **model-specific emergent mechanism** proving that ignoring early netw
 ```bash
 # 1. Environment Setup
 python -m venv venv
-source venv/bin/activate  # Or `venv\Scripts\activate` on Windows
+source venv/bin/activate  # Or `venv\\Scripts\\activate` on Windows
 
 # 2. Dependency Installation
 pip install -r requirements.txt
@@ -175,3 +177,12 @@ Sangam Vidyut is complementary to aggregate/system-dynamics energy-policy models
 - Validating physical system-size (kW) capacity distributions.
 - Testing formal Reinforcement Learning policy-rule alternatives against the heuristic.
 - External real-world validation and rigorous sensitivity/uncertainty analysis.
+"""
+
+def update_readme():
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(README_CONTENT)
+    print("Successfully updated README.md")
+
+if __name__ == "__main__":
+    update_readme()
