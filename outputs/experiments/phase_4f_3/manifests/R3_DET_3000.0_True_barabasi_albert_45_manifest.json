@@ -1,0 +1,18 @@
+{
+  "run_id": "R3_DET_3000.0_True_barabasi_albert_45",
+  "experiment_id": "phase_4f_3",
+  "model_class": "DETERMINISTIC_EMPIRICAL_ABM",
+  "topology": "barabasi_albert",
+  "beta": 0.15,
+  "seed": 45,
+  "subsidy": 3000.0,
+  "dynamic_policy": true,
+  "population_size": 500,
+  "horizon": 24,
+  "status": "COMPLETED",
+  "provider": "N/A",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "config_sha256": "fa5b8512b9b94eb78a5710e5f3b704597463dcc1f12106f1b38a28c760f06f6f",
+  "summary_sha256": "f7283a95cda8c29060401e22a6a6725760b363d5f1aee028116ffeac0037d8a5",
+  "trajectory_sha256": "e2f267086b0ebe538438d2c5bcaa69bb6959a7cca39c5441f551318827f1f3ef"
+}

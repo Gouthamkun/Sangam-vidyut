@@ -1,0 +1,18 @@
+{
+  "run_id": "R3_DET_3000.0_False_watts_strogatz_47",
+  "experiment_id": "phase_4f_3",
+  "model_class": "DETERMINISTIC_EMPIRICAL_ABM",
+  "topology": "watts_strogatz",
+  "beta": 0.15,
+  "seed": 47,
+  "subsidy": 3000.0,
+  "dynamic_policy": false,
+  "population_size": 500,
+  "horizon": 24,
+  "status": "COMPLETED",
+  "provider": "N/A",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "config_sha256": "a1f5280c6709077eb0c7a7c26a7bc79ccf2fca382787e34b046080da70c7271a",
+  "summary_sha256": "d2220bbbe4cd547d82f55ab1247e8cd42fa7a6b937a30523ba32ce7385dde190",
+  "trajectory_sha256": "8f21815fa99366e39cf24516612714bb30653167484c2cbf190d0be59101e6cd"
+}

@@ -1,0 +1,18 @@
+{
+  "run_id": "R3_STAT_3000.0_False_barabasi_albert_45",
+  "experiment_id": "phase_4f_3",
+  "model_class": "STATIC_BASELINE",
+  "topology": "barabasi_albert",
+  "beta": 0.15,
+  "seed": 45,
+  "subsidy": 3000.0,
+  "dynamic_policy": false,
+  "population_size": 500,
+  "horizon": 24,
+  "status": "COMPLETED",
+  "provider": "N/A",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "config_sha256": "453a860c733bf1e0cb8fe7077f51564f1a4301d5cf5fac292acb5bfd7f931289",
+  "summary_sha256": "3041eef7058b508b4949cf3b9d31acde0dacb32618db5abc17d0de5ce940e46f",
+  "trajectory_sha256": "2346a8f27232d5c95badbb8c7346e3b3e50f826f990e2bc47f4db434ae901cbe"
+}

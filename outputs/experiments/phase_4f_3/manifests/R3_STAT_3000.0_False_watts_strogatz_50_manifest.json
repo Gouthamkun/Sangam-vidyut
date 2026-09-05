@@ -1,0 +1,18 @@
+{
+  "run_id": "R3_STAT_3000.0_False_watts_strogatz_50",
+  "experiment_id": "phase_4f_3",
+  "model_class": "STATIC_BASELINE",
+  "topology": "watts_strogatz",
+  "beta": 0.15,
+  "seed": 50,
+  "subsidy": 3000.0,
+  "dynamic_policy": false,
+  "population_size": 500,
+  "horizon": 24,
+  "status": "COMPLETED",
+  "provider": "N/A",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "config_sha256": "194debb592030d8fd398dfd610ac496997dbab575be7f0e83c2df5685c567a47",
+  "summary_sha256": "3644a1f7a09eb3871f213ecd76134321c8de0ccc9e5c024429c5523900f703d2",
+  "trajectory_sha256": "aad12dd0b40415e7d1cc933e04420f96c9eadee5d2cbdbec8cb339e7786f152c"
+}

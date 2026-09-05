@@ -1,0 +1,18 @@
+{
+  "run_id": "R3_COG_3000.0_False_barabasi_albert_46",
+  "experiment_id": "phase_4f_3",
+  "model_class": "HYBRID_COGNITIVE_ABM",
+  "topology": "barabasi_albert",
+  "beta": 0.15,
+  "seed": 46,
+  "subsidy": 3000.0,
+  "dynamic_policy": false,
+  "population_size": 500,
+  "horizon": 24,
+  "status": "COMPLETED",
+  "provider": "mock",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "config_sha256": "4fd10b68e76d528b854db5b52580453f46f14b6973e5ebd9110ae03ffa4a6e2d",
+  "summary_sha256": "deef50f29b7461c6ef2d4b803fd33525dd72f9ab61960a2c2eda7bbfd47b6c7d",
+  "trajectory_sha256": "aaa900459494ed35ffc1f55c30d34be65ad441eb54114e5d0c650847c8c262d2"
+}

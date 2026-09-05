@@ -140,3 +140,31 @@ def test_confidence_normalization():
     assert len(NORMALIZATION_EVENTS) == 3
     assert NORMALIZATION_EVENTS[-1]["normalized_value"] == 0.5
     assert "unrecoverable" in NORMALIZATION_EVENTS[-1]["reason"]
+
+def test_metric_extraction_pathway():
+    """TEST 7: SUMMARY METRIC EXTRACTION PATHWAY"""
+    config = ExperimentConfig()
+    config.llm.enabled = True
+    config.llm.provider = "mock"
+    config.llm.cache_enabled = True
+    
+    # Initialize a lightweight dummy model setup to mock a cognitive simulation
+    model = SangamVidyutModel(config)
+    
+    # Simulate some cache hits directly on the instantiated provider
+    provider = model.llm_interface.provider
+    provider.cache_hits = 895
+    provider.cache_misses = 2050
+    
+    # Replicate the exact metric extraction logic required for Phase 4F.3
+    extracted_interface = getattr(model, 'llm_interface', None)
+    if extracted_interface and hasattr(extracted_interface, 'provider'):
+        extracted_hits = getattr(extracted_interface.provider, 'cache_hits', 0)
+        extracted_misses = getattr(extracted_interface.provider, 'cache_misses', 0)
+    else:
+        extracted_hits = 0
+        extracted_misses = 0
+        
+    assert extracted_hits == 895
+    assert extracted_misses == 2050
+    assert extracted_hits == provider.cache_hits

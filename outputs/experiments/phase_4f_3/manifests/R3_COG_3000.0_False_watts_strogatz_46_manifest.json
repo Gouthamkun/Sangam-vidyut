@@ -1,0 +1,18 @@
+{
+  "run_id": "R3_COG_3000.0_False_watts_strogatz_46",
+  "experiment_id": "phase_4f_3",
+  "model_class": "HYBRID_COGNITIVE_ABM",
+  "topology": "watts_strogatz",
+  "beta": 0.15,
+  "seed": 46,
+  "subsidy": 3000.0,
+  "dynamic_policy": false,
+  "population_size": 500,
+  "horizon": 24,
+  "status": "COMPLETED",
+  "provider": "mock",
+  "calibration_artifact_sha256": "0d5acf7ef798ebd814d6a6431f9b9f1da36789c0225120f4468d78c2e9f1d241",
+  "config_sha256": "ddc7d3ec2f5eff5c87bd80d467745a22c2332fbe52c88bc18aaf20295559f747",
+  "summary_sha256": "d855e63402e2890fa61e70f22c1bd51502069cc605a3b0785ca421f6532357bf",
+  "trajectory_sha256": "31cfce04c55ad47bd91cb515d9d4c6ee08328edba16d91d0c6a1d4dcd46560d0"
+}
