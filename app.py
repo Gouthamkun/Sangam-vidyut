@@ -98,60 +98,6 @@ def render_locked_research_results():
     # DYNAMIC METRICS (KPIs)
     # ==========================================
     if phase == "Phase 4F.1" and not df1.empty:
-        subset = df1[(df1["subsidy"] == subsidy) & 
-                     (df1["topology"] == topology) & 
-                     (df1["beta"] == beta) & 
-                     (df1["p_base_mode"] == p_base_mode) &
-                     (df1["model_class"] == "DETERMINISTIC_EMPIRICAL_ABM")]
-        
-        if not subset.empty:
-            st.subheader("Model KPIs (Selected Configuration)")
-            c1, c2, c3, c4 = st.columns(4)
-            c1.metric("Runs Found", len(subset))
-            c2.metric("Mean Final Adoption Count", f"{subset['final_adoption'].mean():.1f}")
-            c3.metric("Max Final Adoption Count", f"{subset['final_adoption'].max():.0f}")
-            c4.metric("Mean Final Adoption %", f"{subset['final_adoption'].mean() / 500 * 100:.1f}%")
-        else:
-            st.warning("Selected factor combination is not available in this phase.")
-    
-    elif phase == "Phase 4F.2" and not df2.empty:
-        subset = df2[(df2["subsidy"] == subsidy) & 
-                     (df2["topology"] == topology) & 
-                     (df2["beta"] == beta) & 
-                     (df2["p_base_mode"] == p_base_mode) &
-                     (df2["model_class"] == "DETERMINISTIC_EMPIRICAL_ABM")]
-        
-        if not subset.empty:
-            st.subheader("Model KPIs (Selected Configuration)")
-            c1, c2, c3, c4 = st.columns(4)
-            c1.metric("Final Adoption %", f"{subset.iloc[0]['mean_adoption_pct']*100:.1f}%")
-            c2.metric("Mean Final Count", f"{subset.iloc[0]['mean_adoption_count']:.0f}")
-            c3.metric("Tipping Freq", f"{subset.iloc[0]['tipping_freq']*100:.0f}%")
-            c4.metric("Mean Peak New", f"{subset.iloc[0]['mean_peak_new']:.0f}")
-        else:
-            st.warning("Selected factor combination is not available in this phase.")
-    
-    elif phase == "Phase 4F.3" and not df3.empty:
-        st.subheader("Model KPIs (Selected Configuration)")
-        is_dyn = (policy == "Target-seeking dynamic")
-        traj = load_trajectory(subsidy, topology, is_dyn)
-        if not traj.empty:
-            final_row = traj.iloc[-1]
-            c1, c2, c3, c4 = st.columns(4)
-            c1.metric("Final Adoption Count", f"{final_row['adoption_count']:.0f} / 500")
-            c2.metric("Total Expenditure", f"₹{1000000 - final_row['budget_remaining']:.0f}")
-            c3.metric("Budget Remaining", f"₹{final_row['budget_remaining']:.0f}")
-            c4.metric("Time to 50%", f"Quarter {traj[traj['adoption_count'] >= 250]['quarter'].min() if (traj['adoption_count'] >= 250).any() else 'N/A'}")
-        else:
-            st.warning("Selected factor combination is not available in this phase.")
-    
-    # ==========================================
-    # MAIN ADOPTION CHART (SELECTION-SPECIFIC)
-    # ==========================================
-    st.divider()
-    st.header("Selected Configuration")
-    
-    if phase == "Phase 4F.1" and not df1.empty:
         df_abm = df1[(df1["topology"] == topology) & 
                      (df1["beta"] == beta) & 
                      (df1["p_base_mode"] == p_base_mode) &
@@ -160,11 +106,12 @@ def render_locked_research_results():
         if df_abm.empty:
             st.warning("Selected factor combination is not available in this phase.")
         else:
-            st.markdown(f"**Data for exact selection**: topology=`{topology}`, beta=`{beta}`, p_base=`{p_base_mode}`")
+            st.markdown(f"**Scope**: topology=`{topology}`, beta=`{beta}`, household=`{p_base_mode}`")
+            if df_abm["subsidy"].nunique() <= 1:
+                st.info("Only one subsidy level was tested for this exact configuration in Phase 4F.1.")
             df_abm["adoption_pct"] = (df_abm["final_adoption"] / 500.0) * 100
             fig = px.box(df_abm, x="subsidy", y="adoption_pct", title="Adoption Distribution Across Available Subsidies")
-            st.plotly_chart(fig, width="stretch")
-    
+            st.plotly_chart(fig, use_container_width=True)
     elif phase == "Phase 4F.2" and not df2.empty:
         df_abm = df2[(df2["topology"] == topology) & 
                      (df2["beta"] == beta) & 
@@ -174,21 +121,22 @@ def render_locked_research_results():
         if df_abm.empty:
             st.warning("Selected factor combination is not available in this phase.")
         else:
-            st.markdown(f"**Data for exact selection**: topology=`{topology}`, beta=`{beta}`, p_base=`{p_base_mode}`")
+            st.markdown(f"**Scope**: topology=`{topology}`, beta=`{beta}`, household=`{p_base_mode}`")
+            if df_abm["subsidy"].nunique() <= 1:
+                st.info("Only one subsidy level was tested for this exact configuration.")
             df_abm["adoption_pct"] = df_abm["mean_adoption_pct"] * 100
-            fig = px.box(df_abm, x="subsidy", y="adoption_pct", title="Adoption Distribution Across Subsidies")
-            st.plotly_chart(fig, width="stretch")
-    
+            fig = px.box(df_abm, x="subsidy", y="adoption_pct", title="Adoption Distribution Across Available Subsidies")
+            st.plotly_chart(fig, use_container_width=True)
     elif phase == "Phase 4F.3":
         is_dyn = (policy == "Target-seeking dynamic")
         traj = load_trajectory(subsidy, topology, is_dyn)
-        
+    
         if not traj.empty:
             st.markdown(f"**Data for exact selection**: policy=`{policy}`, subsidy=`{subsidy}`, topology=`{topology}`")
             traj["Policy"] = policy
             fig = px.line(traj, x="quarter", y="adoption_count", color="Policy", title=f"Adoption Trajectory (Subsidy {subsidy}, {policy})")
             fig.add_hline(y=250, line_dash="dash", line_color="red", annotation_text="50% Target")
-            st.plotly_chart(fig, width="stretch")
+            st.plotly_chart(fig, use_container_width=True)
         else:
             st.warning("Selected factor combination is not available in this phase.")
     
@@ -201,55 +149,68 @@ def render_locked_research_results():
     if phase in ["Phase 4F.1", "Phase 4F.2"]:
         c1, c2 = st.columns(2)
         
-        # Select the right dataframe and extract the ABM rows
         if phase == "Phase 4F.1":
             df_comp = df1[df1["model_class"] == "DETERMINISTIC_EMPIRICAL_ABM"].copy()
             df_comp["adoption_pct"] = (df_comp["final_adoption"] / 500.0) * 100
         else:
             df_comp = df2[df2["model_class"] == "DETERMINISTIC_EMPIRICAL_ABM"].copy()
             df_comp["adoption_pct"] = df_comp["mean_adoption_pct"] * 100
-    
+
         with c1:
             st.subheader("Subsidy Response Panel")
-            st.markdown("*Comparison intentionally aggregated across all topologies and betas.*")
-            fig2 = px.line(df_comp.groupby("subsidy")["adoption_pct"].mean().reset_index(), x="subsidy", y="adoption_pct", markers=True)
-            if phase == "Phase 4F.2":
-                fig2.add_vrect(x0=-100, x1=2000, fillcolor="red", opacity=0.1, annotation_text="AFFORDABILITY-BLOCKED")
-                fig2.add_vrect(x0=2000, x1=3000, fillcolor="orange", opacity=0.1, annotation_text="DIFFUSION-ACTIVE")
-                fig2.add_vrect(x0=3000, x1=5100, fillcolor="green", opacity=0.1, annotation_text="SATURATED")
-            st.plotly_chart(fig2, width="stretch")
+            st.markdown("**Scope**: All topologies × All beta values × All household modes")
+            agg_df = df_comp.groupby("subsidy")["adoption_pct"].mean().reset_index()
+            if len(agg_df) > 1:
+                fig2 = px.line(agg_df, x="subsidy", y="adoption_pct", markers=True)
+                if phase == "Phase 4F.2":
+                    fig2.add_vrect(x0=-100, x1=2000, fillcolor="red", opacity=0.1, annotation_text="AFFORDABILITY-BLOCKED")
+                    fig2.add_vrect(x0=2000, x1=3000, fillcolor="orange", opacity=0.1, annotation_text="DIFFUSION-ACTIVE")
+                    fig2.add_vrect(x0=3000, x1=5100, fillcolor="green", opacity=0.1, annotation_text="SATURATED")
+                st.plotly_chart(fig2, use_container_width=True)
+            else:
+                st.info("Insufficient subsidy variation in data to plot response curve.")
                 
         with c2:
             st.subheader("Topology Panel")
-            st.markdown("*Topology comparison (aggregated across beta and p_base).*")
-            fig_top = px.bar(df_comp.groupby(["subsidy", "topology"])["adoption_pct"].mean().reset_index(), x="subsidy", y="adoption_pct", color="topology", barmode="group")
-            st.plotly_chart(fig_top, width="stretch")
-    
+            st.markdown("**Scope**: All beta values × All household modes (grouped by topology)")
+            agg_top = df_comp.groupby(["subsidy", "topology"])["adoption_pct"].mean().reset_index()
+            if len(agg_top) > 0:
+                fig_top = px.bar(agg_top, x="subsidy", y="adoption_pct", color="topology", barmode="group")
+                st.plotly_chart(fig_top, use_container_width=True)
+            else:
+                st.warning("No data available.")
+
         c3, c4 = st.columns(2)
         with c3:
             st.subheader("Beta Panel")
-            st.markdown("*Beta comparison (aggregated across topology and p_base).*")
-            fig_beta = px.line(df_comp.groupby(["subsidy", "beta"])["adoption_pct"].mean().reset_index(), x="subsidy", y="adoption_pct", color="beta", markers=True)
-            st.plotly_chart(fig_beta, width="stretch")
+            st.markdown("**Scope**: All topologies × All household modes (grouped by beta)")
+            agg_beta = df_comp.groupby(["subsidy", "beta"])["adoption_pct"].mean().reset_index()
+            # Convert beta back to string if it was float so plotly handles it as discrete color correctly
+            agg_beta["beta"] = agg_beta["beta"].astype(str)
+            if len(agg_beta) > 0:
+                fig_beta = px.line(agg_beta, x="subsidy", y="adoption_pct", color="beta", markers=True)
+                st.plotly_chart(fig_beta, use_container_width=True)
+            else:
+                st.warning("No data available.")
                 
         with c4:
             st.subheader("Heterogeneity Panel")
-            st.markdown(f"**Data specific to current selection**: topology=`{topology}`, beta=`{beta}`")
+            st.markdown(f"**Scope**: topology=`{topology}`, beta=`{beta}` (grouped by household mode)")
             df_het = df_comp[(df_comp["topology"] == topology) & (df_comp["beta"] == beta)].copy()
-            if not df_het.empty:
-                fig_het = px.line(df_het.groupby(["subsidy", "p_base_mode"])["adoption_pct"].mean().reset_index(), x="subsidy", y="adoption_pct", color="p_base_mode", markers=True)
-                st.plotly_chart(fig_het, width="stretch")
+            if df_het.empty:
+                st.warning("No validated result for this exact topology and beta combination.")
             else:
-                st.warning("Selected topology and beta have no data for heterogeneity comparison.")
-    
+                agg_het = df_het.groupby(["subsidy", "p_base_mode"])["adoption_pct"].mean().reset_index()
+                if agg_het["subsidy"].nunique() <= 1:
+                    st.info(f"Only one subsidy level exists for topology={topology}, beta={beta}. Line chart unavailable.")
+                    fig_het = px.scatter(agg_het, x="subsidy", y="adoption_pct", color="p_base_mode", size_max=10)
+                    st.plotly_chart(fig_het, use_container_width=True)
+                else:
+                    fig_het = px.line(agg_het, x="subsidy", y="adoption_pct", color="p_base_mode", markers=True)
+                    st.plotly_chart(fig_het, use_container_width=True)
+
     else:
-        # Phase 4F.3 comparison view is the budget paradox panel
         st.info("Factor Analysis panels apply to sweeping mechanisms (4F.1, 4F.2). Phase 4F.3 isolates budget expenditure (see below).")
-    
-    
-    # ==========================================
-    # BUDGET PARADOX (Phase 4F.3)
-    # ==========================================
     st.divider()
     st.header("The Budget Paradox Panel")
     if phase == "Phase 4F.3":
@@ -271,7 +232,7 @@ def render_locked_research_results():
             combined = pd.concat([t_fixed, t_dyn])
             fig_both = px.line(combined, x="quarter", y="adoption_count", color="Policy", title=f"Adoption Trajectory (Fixed vs Dynamic, Subsidy {subsidy})")
             fig_both.add_hline(y=250, line_dash="dash", line_color="red", annotation_text="50% Target")
-            st.plotly_chart(fig_both, width="stretch")
+            st.plotly_chart(fig_both, use_container_width=True)
     else:
         st.info("The Budget Paradox Panel relies on Phase 4F.3 data. Switch to Phase 4F.3 to view.")
     
@@ -282,7 +243,7 @@ def render_locked_research_results():
     st.header("Architecture & Cognitive Layer")
     col_arch, col_cog = st.columns(2)
     with col_arch:
-        st.image("docs/figures/figure_01_architecture.png", width="stretch")
+        st.image("docs/figures/figure_01_architecture.png", use_container_width=True)
         st.caption("Built with Mesa, NetworkX, and LangGraph.")
     with col_cog:
         st.subheader("Hybrid Cognitive Routing")

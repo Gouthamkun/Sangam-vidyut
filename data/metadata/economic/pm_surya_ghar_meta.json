@@ -2,7 +2,7 @@
   "dataset_id": "PM_SURYA_GHAR_2024",
   "source": "Ministry of New and Renewable Energy (MNRE)",
   "source_url": "https://pmsuryaghar.gov.in",
-  "access_date": "2026-09-05",
+  "access_date": "2026-09-25",
   "checksum": "b43d60f8b493eb2a4288e1e344e268021f0ec2991651fa46eb4db9100fc13faa",
   "raw_filename": "official_guidelines_2024.json",
   "processing_script": "ingest_pm_surya_ghar.py"

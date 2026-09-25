@@ -43,8 +43,12 @@ class LiveSimulationRunner:
         if "cognitive_mode" in kwargs:
             if kwargs["cognitive_mode"] == "deterministic":
                 self.config.llm.enabled = False
-                self.config.cognitive.lower_threshold = 0.5
-                self.config.cognitive.upper_threshold = 0.5
+                # Single rule-based threshold at the empirically-calibrated boundary (0.20).
+                # This eliminates the ambiguous zone (no LLM calls) while permitting
+                # rule-based adoption when score >= 0.20. The value 0.20 matches the
+                # upper_threshold of the cognitive_accessible_candidate_v1 policy.
+                self.config.cognitive.lower_threshold = 0.20
+                self.config.cognitive.upper_threshold = 0.20
             elif kwargs["cognitive_mode"] == "mock":
                 self.config.llm.provider = "mock"
             elif kwargs["cognitive_mode"] == "ollama":
@@ -54,28 +58,51 @@ class LiveSimulationRunner:
     def run(self):
         start_time = time.time()
         model = SangamVidyutModel(self.config)
+        self._model = model
         
-        if self.initial_adoption != 5:
-            # Overwrite the hardcoded initial adoption in model.py safely
-            for a in model.agents:
-                if hasattr(a, 'is_adopter'):
-                    a.is_adopter = False
-                    a.sir_state = 0
+        if self.config.simulation.baseline_provider == "empirical":
+            from src.simulation.agents.adapters import create_consumer_from_household_record
+            from src.simulation.agents.consumer import ConsumerAgent
             
-            initial_nodes = np.random.choice(model.G.nodes(), size=self.initial_adoption, replace=False)
-            for node in initial_nodes:
-                agent_list = model.grid.get_cell_list_contents([node])
-                for a in agent_list:
-                    if hasattr(a, 'is_adopter'):
-                        a.is_adopter = True
-                        a.sir_state = 1
-                        
-            # Update the already collected step 0 data
-            if "adoption_count" in model.datacollector.model_vars:
-                model.datacollector.model_vars["adoption_count"][0] = self.initial_adoption
-                model.datacollector.model_vars["infected_count"][0] = self.initial_adoption
-                model.datacollector.model_vars["susceptible_count"][0] = self.config.simulation.n_agents - self.initial_adoption
-                model.datacollector.model_vars["adoption_rate"][0] = self.initial_adoption / self.config.simulation.n_agents
+            seed = self.config.simulation.seed
+            pop_path = f'data/processed/households/synthetic/population_500_seed_{seed}.parquet'
+            if not os.path.exists(pop_path):
+                pop_path = 'data/processed/households/synthetic/population_500_seed_42.parquet'
+                
+            pop_df = pd.read_parquet(pop_path).head(self.config.simulation.n_agents)
+            
+            # Remove default mock consumer agents
+            for agent in list(model.agents):
+                if isinstance(agent, ConsumerAgent):
+                    if hasattr(agent, 'pos') and agent.pos is not None:
+                        model.grid.remove_agent(agent)
+                    model.agents.remove(agent)
+                    
+            # Inject synthetic agents
+            for i, row in pop_df.iterrows():
+                agent = create_consumer_from_household_record(model, row)
+                model.grid.place_agent(agent, i)
+        
+        # Override initial adoption safely (works for both empirical and constant)
+        for a in model.agents:
+            if hasattr(a, 'is_adopter'):
+                a.is_adopter = False
+                a.sir_state = 0
+        
+        initial_nodes = np.random.choice(model.G.nodes(), size=self.initial_adoption, replace=False)
+        for node in initial_nodes:
+            agent_list = model.grid.get_cell_list_contents([node])
+            for a in agent_list:
+                if hasattr(a, 'is_adopter'):
+                    a.is_adopter = True
+                    a.sir_state = 1
+                    
+        # Update the already collected step 0 data
+        if "adoption_count" in model.datacollector.model_vars:
+            model.datacollector.model_vars["adoption_count"][0] = self.initial_adoption
+            model.datacollector.model_vars["infected_count"][0] = self.initial_adoption
+            model.datacollector.model_vars["susceptible_count"][0] = self.config.simulation.n_agents - self.initial_adoption
+            model.datacollector.model_vars["adoption_rate"][0] = self.initial_adoption / self.config.simulation.n_agents
 
         horizon = self.config.simulation.timesteps
         for step in range(horizon):
